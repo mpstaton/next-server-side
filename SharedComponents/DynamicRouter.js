@@ -9,7 +9,8 @@ findable through props.url.query.content
 function GetLink(props) {
     return (
         <div>
-            <Link href={`/SecondPage?content=${props.title}`}>
+            <Link href={`/SecondPage?content=${props.title}`}
+                  as={props.Disp}>
                 <a>{props.title}</a>
             </Link>
             
