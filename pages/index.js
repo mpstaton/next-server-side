@@ -11,9 +11,9 @@ function MyComponent(){
             </Link>
 
             <p>A GetLink attempt</p>
-            <GetLink title= 'Page 1'></GetLink>
-            <GetLink title= 'Page 2'></GetLink>
-            <GetLink title= 'Page 2'></GetLink>        
+            <GetLink title='Page 1'></GetLink>
+            <GetLink title='Page 2'></GetLink>
+            <GetLink title='Page 3'></GetLink>        
         </div>
     );
 }
