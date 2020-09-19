@@ -1,6 +1,7 @@
 import React from "react";
 import Link from 'next/link';
 import GetLink from "../SharedComponents/DynamicRouter";
+import "../style.css";
 
 function MyComponent(){
     return(
