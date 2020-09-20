@@ -3,10 +3,6 @@ import axios from 'axios';
 import '../style.css';
 
 export default class extends React.Component {
-/*
-getInitialProps() method gets the initial list of Github users and returns the data that is set as props for the page. 
-These props can be accessed using “this.props” and are not editable.
-*/
     static async getInitialProps() {
         try {
             const res = await axios.get('https://api.github.com/users');
@@ -16,27 +12,14 @@ These props can be accessed using “this.props” and are not editable.
         }
     }
 
-/*
-constructor() method initializes the state object with the values passed as props. 
-This state object will be updated every time we fetch GitHub user details for a specific user requested.
-*/
-
     constructor(props) {
         super(props);
         this.state = { data: props.data, error: props.error };
     }
 
-/*
-GetUser() method handles the click event of the button and makes an API call every time the user requests details for a specific GitHub user. 
-The user id for the GitHub is fetched from the input textbox and is sent as a parameter to the API call. 
-The state object is updated with the data returned by the API call. 
-As soon as the state object is updated, React re-renders the view.
-*/
-    
     GetUser = async () => {
         try {
-            const res = await axios.get('https://api.github.com/users/' + 
-                                    document.getElementById('inputTextbox').value)
+            const res = await axios.get('https://api.github.com/users/' + document.getElementById('inputTextbox').value);
             this.setState({
                 data: [res.data],
                 error: null
@@ -59,11 +42,11 @@ As soon as the state object is updated, React re-renders the view.
                         <input id='inputTextbox' type='text'></input>
                         <button type='button'
                             onClick={this.GetUser}>
-                                Get User
+                            Get User
                             </button>
                     </div>
                     <br />
-                    <p className="error">Error: {this.props.error.message}</p>
+                    <p className="error">Error: {this.state.error.message}</p>
                 </div>
             );
         }
@@ -72,12 +55,21 @@ As soon as the state object is updated, React re-renders the view.
                 <div>
                     <h1>Github Users</h1>
                     <br />
-                    {this.props.data.map((item, index) => (
+                    <div className='center'>
+                        <input id='inputTextbox' type='text'></input>
+                        <button type='button'
+                            onClick={this.GetUser}>
+                            Get User
+                        </button>
+                    </div>
+                    <br />
+                    {this.state.data.map((item, index) => (
                         <div key={index} className='UserBlock'>
                             <img src={item.avatar_url}
                                 alt='User Icon'>
                             </img>
-                            <div className="UserDetails">
+
+                            <div className='UserDetails'>
                                 <p>Username: {item.login}</p>
                                 <p>ID: {item.id}</p>
                             </div>
