@@ -12,7 +12,7 @@ These props can be accessed using “this.props” and are not editable.
             const res = await axios.get('https://api.github.com/users');
             return { data: res.data }
         } catch (e) {
-            return {error:e}
+            return { error: e }
         }
     }
 
@@ -23,8 +23,7 @@ This state object will be updated every time we fetch GitHub user details for a 
 
     constructor(props) {
         super(props);
-        this.state = { data: props.data,
-                       error: props.error };
+        this.state = { data: props.data, error: props.error };
     }
 
 /*
@@ -51,10 +50,20 @@ As soon as the state object is updated, React re-renders the view.
     }
 
     render() {
-        if (this.props.error) {
+        if (this.state.error) {
             return (
                 <div>
-                    Error: {this.props.error.message}
+                    <h1>Github Users</h1>
+                    <br />
+                    <div className='center'>
+                        <input id='inputTextbox' type='text'></input>
+                        <button type='button'
+                            onClick={this.GetUser}>
+                                Get User
+                            </button>
+                    </div>
+                    <br />
+                    <p className="error">Error: {this.props.error.message}</p>
                 </div>
             );
         }
