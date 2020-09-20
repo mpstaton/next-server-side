@@ -36,3 +36,11 @@ export default withRedux(initStore)(
   }
 )
 
+/*
+The App componenet is provided by the next library.
+It initializes Pages. ctx stands for Context.
+The <Provider> component is provided by the "react-redux" library
+to "wrap" the Page component.
+
+*/
+
